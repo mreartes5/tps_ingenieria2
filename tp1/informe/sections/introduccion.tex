@@ -1,0 +1,63 @@
+\section{User Stories}
+
+Las user stories del Backlog son:
+\begin{enumerate}
+\item Como dueño quiero que el celular del asegurado se comunique por bluetooth con el dispositivo del auto para que la aplicación reconozca que esta en el auto 
+asegurado. 
+
+Story points: 1.
+
+\item Como dueño quiero que la aplicación esté corriendo en background para poder conectarse con el dispositivo en el auto asegurado. 
+
+Story points: 
+1.
+
+\item Como dueño quiero que la aplicación registre la información de la posición actual y velocidad para guardar los datos que servirán para los cálculos del 
+scoring. 
+
+Story Points: 2
+
+\item Como dueño quiero que la aplicación registre el total de kilómetros recorridos en un periodo de tiempo para brindar más información al algoritmo que calcula el 
+scoring. 
+
+Story Points: 2.
+
+\item Como dueño quiero que la aplicación envíe información al servidor una vez al mes para hacer los cálculos del scoring. 
+
+Story Points: 2.
+
+\end{enumerate}
+
+Decidimos asignarle 1 story point a la user story 1 dado que nos parece la más simple de realizar con respecto a otras, ya que no presenta dificultades técnicas ni de diseño. A partir de esta decisión, se estimaron el resto de las stories.
+
+\section{Sprint}
+
+Seleccionamos para el Sprint las user stories que son necesarias para la demo. 
+Las mismas son las siguientes:
+\begin{enumerate}
+\item Como dueño quiero que la aplicación consulte un servicio de mapas para obtener información de velocidad máxima permitida del lugar transitado y si la zona es insegura o no. 
+
+Story Points: 5.
+
+\item Como dueño quiero registrar distintos tipos de eventos con sus costos asociados para sumar puntos al 
+scoring. 
+
+Story Points: 8.
+
+\item Como dueño quiero poder agregar con facilidad nuevos tipos de eventos para hacer más flexible la 
+aplicación. 
+
+Story Points: 3.
+
+\item Como dueño quiero que se procesen los datos recibidos para generar los scorings.
+
+Story Points: 8.
+
+\end{enumerate}
+
+\section{Aclaraciones}
+\begin{itemize}
+\item La aplicación de celular registrará datos de la fecha/hora, posición y velocidad. Esta información se enviará al servidor y este se encargará de realizar los cálculos correspondientes para obtener el scoring.
+\item El servidor será el encargado de conectarse con la aplicación de mapas para obtener la información de velocidades máximas y zonas inseguras.
+\item Se asume que el celular del asegurado tiene prendido el bluetooth.
+\end{itemize}
