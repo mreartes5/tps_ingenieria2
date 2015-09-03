@@ -7,24 +7,34 @@ asegurado.
 
 Story points: 1.
 
+Criterio de aceptación: Si me acerco con el celular al dispositivo colocado en el auto, se establece la conexión y se muestra una notificación de éxito. En caso de que falle se intentará cada 10 segundos.
+
 \item Como dueño quiero que la aplicación esté corriendo en background para poder conectarse con el dispositivo en el auto asegurado. 
 
-Story points: 
-1.
+Story points: 1.
+
+Criterio de aceptación: Cuando se acerca el teléfono al dispositivo bluetooth se establece la conexión directamente, sin que el usuario tenga que abrir la aplicación.
 
 \item Como dueño quiero que la aplicación registre la información de la posición actual y velocidad para guardar los datos que servirán para los cálculos del 
 scoring. 
 
-Story Points: 2
+Story Points: 2.
+
+Criterio de aceptación: Una vez establecida la conexión, la aplicación debe registrar cada 10 segundos la información.
 
 \item Como dueño quiero que la aplicación registre el total de kilómetros recorridos en un periodo de tiempo para brindar más información al algoritmo que calcula el 
 scoring. 
 
 Story Points: 2.
 
+Criterio de aceptación: Luego de cierto tiempo quede registrado el total aproximado de los kilómetros recorridos.
+
 \item Como dueño quiero que la aplicación envíe información al servidor una vez al mes para hacer los cálculos del scoring. 
 
 Story Points: 2.
+
+Criterio de aceptación:
+Se pueden enviar desde la aplicación los datos obtenidos y poder recibirlos desde el servidor.
 
 \end{enumerate}
 
@@ -39,19 +49,26 @@ Las mismas son las siguientes:
 
 Story Points: 5.
 
-\item Como dueño quiero registrar distintos tipos de eventos con sus costos asociados para sumar puntos al 
-scoring. 
+Criterio de aceptación: Dado un par de coordenas se prueba si la información obtenida es la correcta.
+
+\item Como dueño quiero registrar distintos tipos de eventos con sus costos asociados para sumar puntos al scoring. 
 
 Story Points: 8.
+
+Criterio de aceptación: Los eventos solicitados hasta el momento son tenidos en cuenta por la aplicación.
 
 \item Como dueño quiero poder agregar con facilidad nuevos tipos de eventos para hacer más flexible la 
 aplicación. 
 
 Story Points: 3.
 
+Criterio de aceptación: Poder agregar un nuevo tipo evento y se refleje en los cálculos del scoring.
+
 \item Como dueño quiero que se procesen los datos recibidos para generar los scorings.
 
 Story Points: 8.
+
+Criterio de aceptación: Dado un conjunto de datos, se calcula el scoring a partir de los mismos.
 
 \end{enumerate}
 
