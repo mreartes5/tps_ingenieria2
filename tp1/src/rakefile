@@ -1,0 +1,13 @@
+task :default => :test
+
+desc 'Run tests'
+task :test do
+  require File.expand_path("./test/helper", File.dirname(__FILE__))
+
+  Dir["test/**/*_test.rb"].each { |file| load file }
+end
+
+desc 'Load application and open IRB'
+task :start do
+  exec "irb -r ./app.rb"
+end

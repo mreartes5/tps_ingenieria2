@@ -1,5 +1,5 @@
-require_relative 'measure'
-require_relative 'evento'
+Dir["models/**/*.rb"].each { |file| load file }
+Dir["services/**/*.rb"].each { |file| load file }
 
 gen = GeneradorDeScoring.new
 
@@ -16,7 +16,6 @@ medicion3 = Medicion.new coord3, Velocidad.new(150), Time.now
 del_mes = MedidaDelMes.new [medicion, medicion2, medicion3], :policy
 
 scoring = gen.generar_scoring del_mes
-require 'pry'; binding.pry
 
 puts scoring.puntaje
 
