@@ -16,8 +16,8 @@ class EventoCambioBrusco < Evento
     medicion_del_mes.mediciones.each_cons(2) do |mediciones|
       velocidad1, velocidad2 = mediciones.map(&:velocidad)
 
-      #TODO: Comparar y restar objetos
-      if (velocidad1.valor - velocidad2.valor).abs >= @velocidad_limite_de_cambio.valor
+      velocidad_diferencia = OperadorDeVelocidades.restar(velocidad1, velocidad2)
+      if OperadorDeVelocidades.mayor_o_igual(velocidad_diferencia, @velocidad_limite_de_cambio)
         ocurrencias << OcurrenciaDeEvento.new(self)
       end
     end

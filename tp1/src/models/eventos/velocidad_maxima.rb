@@ -15,8 +15,7 @@ class EventoVelocidadMaxima < Evento
       velocidad_limite =
         velocidad_maxima.dame_una_nueva_velocidad_incrementada_por @porcentaje_limite
 
-      # TODO: Comparar objetos
-      if medicion.velocidad.valor >= velocidad_limite.valor
+      if OperadorDeVelocidades.mayor_o_igual(medicion.velocidad, velocidad_limite)
         ocurrencias << OcurrenciaDeEvento.new(self)
       end
     end
