@@ -20,7 +20,7 @@ class GeneradorScoringTest < Test::Unit::TestCase
 
 
   def test_medicion_vacia_tiene_cero_puntos
-    del_mes = MedidaDelMes.new [], @poliza
+    del_mes = MedicionDeMes.new [], @poliza
 
     scoring = @generador.generar_scoring del_mes
 
@@ -35,7 +35,7 @@ class GeneradorScoringTest < Test::Unit::TestCase
       Medicion.new(@coord_2_2, @velocidad_40, Time.now),
     ]
 
-    del_mes = MedidaDelMes.new mediciones, @poliza
+    del_mes = MedicionDeMes.new mediciones, @poliza
     scoring = @generador.generar_scoring del_mes
 
     assert_equal 0, scoring.puntaje
@@ -47,7 +47,7 @@ class GeneradorScoringTest < Test::Unit::TestCase
       Medicion.new(@coord_1_1, @velocidad_150, Time.now),
     ]
 
-    del_mes = MedidaDelMes.new mediciones, @poliza
+    del_mes = MedicionDeMes.new mediciones, @poliza
     scoring = @generador.generar_scoring del_mes
     infracciones = scoring.infracciones.map(&:evento).map(&:class)
 
@@ -61,7 +61,7 @@ class GeneradorScoringTest < Test::Unit::TestCase
       Medicion.new(@coord_1_1, @velocidad_60, Time.now),
     ]
 
-    del_mes = MedidaDelMes.new mediciones, @poliza
+    del_mes = MedicionDeMes.new mediciones, @poliza
     scoring = @generador.generar_scoring del_mes
 
     assert_equal 0, scoring.puntaje
@@ -73,7 +73,7 @@ class GeneradorScoringTest < Test::Unit::TestCase
       Medicion.new(@coord_23_13, @velocidad_150, Time.now),
     ]
 
-    del_mes = MedidaDelMes.new mediciones, @poliza
+    del_mes = MedicionDeMes.new mediciones, @poliza
     scoring = @generador.generar_scoring del_mes
     infracciones = scoring.infracciones.map(&:evento).map(&:class)
 
@@ -92,7 +92,7 @@ class GeneradorScoringTest < Test::Unit::TestCase
       Medicion.new(@coord_23_13, velocidad_mataloni, Time.now),
     ]
 
-    del_mes = MedidaDelMes.new mediciones, @poliza
+    del_mes = MedicionDeMes.new mediciones, @poliza
     scoring = @generador.generar_scoring del_mes
     infracciones = scoring.infracciones.map(&:evento).map(&:class)
 
@@ -105,6 +105,6 @@ class GeneradorScoringTest < Test::Unit::TestCase
     assert_equal 7, scoring.infracciones.size
     assert_equal 3, infracciones.select{|e| e == EventoVelocidadMaxima }.count
     assert_equal 1, infracciones.select{|e| e == EventoZonaInsegura }.count
-    assert_equal 3, infracciones.select{|e| e == EventoCambioBrusco }.count
+    assert_equal 3, infracciones.select{|e| e == EventoCambioBruscoDeVelocidad }.count
   end
 end
