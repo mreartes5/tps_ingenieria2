@@ -1,4 +1,182 @@
 \section{Product Backlog}
 
+Las user stories del Backlog son:
+\begin{enumerate}
+
+\item Como dueño quiero que la aplicacion consulte un servicio de mapas para obtener informacion
+
+Story points: 2
+
+Criterio de aceptación:
+Dado un par de coordenas se prueba si la información obtenida es la correcta.
+
+Business Value: 5
+
+\item Como dueño quiero que la aplicacion consulte un servicio de mapas para obtener informacion de velocidad máxima permitida del lugar transitado
+
+Story points: 5
+
+Criterio de aceptación:
+Dado un par de coordenadas a las que le corresponda una velocidad máxima de 50 km/h, se consulta al servicio de mapas por la velocidad máxima y se obtiene 50 km/h.
+
+Business value: 3
+
+\item Como dueño quiero que la aplicacion consulte un servicio de mapas para obtener informacion de Zona insegura del lugar transitado
+
+Story points: 5
+
+Criterio de aceptación:
+\begin{enumerate}
+	\item Dado un par de coordenadas correspondientes a una zona segura, se consulta al servicio de mapas y la respuesta es que es zona segura.
+	\item Dado un par de coordenadas correspondientes a una zona insegura, se consulta al servicio de mapas y la respuesta es que es zona insegura.
+\end{enumerate}
+
+Business value: 3
+
+\item Como dueño quiero que el celular del asegurado se comunique por bluetooth con el dispositivo del auto para que la aplicacion reconozca que esta en el auto asegurado
+
+Story points: 1
+
+Criterio de aceptación:
+Si me acerco con el celular al dispositivo colocado en el auto, se establece la conexión y se muestra una notificación de éxito. En caso de que falle se intentará cada 10 segundos.
+
+Business value: 2
+
+
+\item Como dueño quiero que la aplicación pueda conectarse en todo momento al auto del asegurado
+
+Story points: 1
+
+Criterio de aceptación:
+Cuando se acerca el teléfono al dispositivo bluetooth se establece la conexión directamente, sin que el usuario tenga que abrir la aplicación
+
+Business value: 3
+
+
+\item Como dueño quiero que la aplicacion registre la información de la posición actual y velocidad para guardar los datos que servirán para los cálculos del scoring
+
+Story points: 2
+
+Criterio de aceptación:
+Una vez establecida la conexión, la aplicación debe registrar cada 10 segundos la información.
+
+Business value: 5
+
+\item Como dueño quiero que la aplicacion registre el total de kilometros recorridos (en 1 mes) para brindar más información al algoritmo que calcula el scoring
+
+Story points: 2
+
+Criterio de aceptación:
+Dada una lista de mediciones, que representan 10 kilometros recorridos, la aplicacion debe devolver 10 como cantidad de km recorridos, el cual es el valor esperado.
+
+Business value: 1
+
+
+\item Como dueño quiero que la aplicación envíe información al servidor una vez al mes para hacer los cálculos del scoring.
+
+Story points: 2
+
+Criterio de aceptación:
+Se pueden enviar desde la aplicación los datos obtenidos y poder recibirlos desde el servidor.
+
+Business value: 3
+
+\end{enumerate}
 
 \section{Sprint Backlog}
+
+Las user stories del Sprint son:
+
+\begin{enumerate}
+
+\item Como dueño quiero que la aplicacion consulte un servicio de mapas ficticio para la demo para obtener informacion de velocidad máxima permitida del lugar transitado y si la zona es insegura o no.
+
+Story points: 1
+
+Criterio de aceptación:
+Dado un par de coordenas se prueba si la información obtenida es la correcta.
+
+Business Value: 5
+
+
+\item Como dueño quiero registrar distintos tipos de eventos con sus costos asociados para sumar puntos al scoring
+
+Story points: 3
+
+Criterio de aceptación:
+Los eventos solicitados hasta el momento son tenidos en cuenta por la aplicación
+
+Business Value: 8
+
+
+\item Como dueño quiero registrar eventos de cambio brusco
+
+Story points: 5
+
+Criterio de aceptación:
+Dado un evento que suma 20 puntos de scoring por cambios bruscos en la velocidad:
+\begin{enumerate} 
+	\item Si no se registra ningun cambio brusco, no se sumaran puntos al scoring.
+	\item Si se registra 1 cambio brusco, se sumaran 20 puntos al scoring.
+	\item Si se registran 3 cambios bruscos, se sumaran 60 puntos al scoring.
+\end{enumerate}
+
+Business value: 5
+
+
+\item Como dueño quiero registrar eventos de zona insegura
+
+Story points: 3
+
+Criterio de aceptación:
+Dado un evento que suma 15 puntos de scoring si se transita una zona insegura:
+\begin{enumerate}
+	\item Si ninguna medicion fue registrada en zona insegura, no se sumaran puntos al scoring.
+	\item Si 1 medicion fue registrada en zona insegura, se sumaran 15 puntos al scoring.
+	\item Si 3 mediciones fueron registradas en zonas inseguras, se sumaran 45 puntos al scoring.
+\end{enumerate}
+
+Business value: 5
+
+
+\item Como dueño quiero registrar eventos de velocidad maxima
+
+Story points: 3
+
+Criterio de aceptación:
+Si tengo un evento que superando el 10% de la velocidad con un costo de 10 puntos de scoring:
+\begin{enumerate}
+	\item Si ninguna medicion supera por mas del 10% el limite de velocidad, no se sumaran puntos al scoring.
+	\item Si 1 medicion supera por mas del 10% el limite de velocidad, se sumaran 10 puntos al scoring.
+	\item Si 3 mediciones superan por mas del 10% el limite de velocidad, se sumaran 30 puntos al scoring. 
+\end{enumerate}
+
+Business value: 5
+
+
+\item Como dueño quiero poder agregar con facilidad nuevos tipos de eventos para hacer más flexible la aplicacion
+
+Story points: 3
+
+Criterio de aceptación:
+Poder agregar un nuevo tipo evento y se refleje en los cálculos del scoring
+
+Business Value: 3
+
+
+\item Como dueño quiero que se procesen los datos recibidos para generar los scorings.
+
+Story points: 8
+
+Criterio de aceptación:
+Dado un conjunto de datos, se calcula el scoring a partir de los mismos.
+\begin{enumerate}
+	\item Con una medicion que exceda el limite de velocidad (con un evento con 10 puntos de scoring), debe devolver un scoring de 10.
+	\item Con 2 mediciones que excedan el limite de velocidad (con un evento con 10 puntos de scoring), debe devolver un scoring de 20.
+	\item Con 1 medicion que se encuentre en una zona insegura (con un evento con 30 puntos de scoring), debe devolver un scoring de 30.
+\end{enumerate}
+
+Business Value: 13
+
+
+\end{enumerate}
