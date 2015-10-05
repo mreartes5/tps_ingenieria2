@@ -14,7 +14,7 @@ class VelocidadTest < Test::Unit::TestCase
 
     assert_equal 100, velocidad.valor
 
-    velocidad.dame_una_nueva_velocidad_incrementada_por _20_porciento
+    velocidad.nueva_velocidad_incrementada_por _20_porciento
 
     assert_equal 100, velocidad.valor
   end
@@ -25,7 +25,7 @@ class VelocidadTest < Test::Unit::TestCase
 
     assert_equal 100, velocidad.valor
 
-    velocidad = velocidad.dame_una_nueva_velocidad_incrementada_por _20_porciento
+    velocidad = velocidad.nueva_velocidad_incrementada_por _20_porciento
 
     assert_equal 120, velocidad.valor
   end

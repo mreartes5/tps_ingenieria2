@@ -1,4 +1,4 @@
-class MedidaDelMes
+class MedicionDeMes
   attr_reader :mediciones, :poliza
 
   def initialize(mediciones, poliza)

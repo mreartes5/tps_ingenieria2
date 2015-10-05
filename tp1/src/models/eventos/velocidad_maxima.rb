@@ -13,9 +13,9 @@ class EventoVelocidadMaxima < Evento
     medicion_del_mes.mediciones.each do |medicion|
       velocidad_maxima = MapaAPI.velocidad_maxima medicion.coordenada
       velocidad_limite =
-        velocidad_maxima.dame_una_nueva_velocidad_incrementada_por @porcentaje_limite
+        velocidad_maxima.nueva_velocidad_incrementada_por @porcentaje_limite
 
-      if OperadorDeVelocidades.mayor_o_igual(medicion.velocidad, velocidad_limite)
+      if medicion.velocidad >= velocidad_limite
         ocurrencias << OcurrenciaDeEvento.new(self)
       end
     end

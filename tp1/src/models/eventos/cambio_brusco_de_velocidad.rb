@@ -1,6 +1,6 @@
 require_relative 'evento'
 
-class EventoCambioBrusco < Evento
+class EventoCambioBruscoDeVelocidad < Evento
 
   def initialize(costo)
     super
@@ -16,8 +16,8 @@ class EventoCambioBrusco < Evento
     medicion_del_mes.mediciones.each_cons(2) do |mediciones|
       velocidad1, velocidad2 = mediciones.map(&:velocidad)
 
-      velocidad_diferencia = OperadorDeVelocidades.restar(velocidad1, velocidad2)
-      if OperadorDeVelocidades.mayor_o_igual(velocidad_diferencia, @velocidad_limite_de_cambio)
+      diferencia_de_velocidad = velocidad1.diferencia_de_velocidad_con(velocidad2)
+      if diferencia_de_velocidad >= @velocidad_limite_de_cambio
         ocurrencias << OcurrenciaDeEvento.new(self)
       end
     end
