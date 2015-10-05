@@ -1,1 +1,10 @@
 \section{Aclaraciones}
+
+\begin{itemize}
+\item La aplicación de celular registrará datos de la fecha/hora, posición y velocidad. Esta información se enviará al servidor y este se encargará de realizar los cálculos correspondientes para obtener el scoring.
+\item El servidor será el encargado de conectarse con la aplicación de mapas para obtener la información de velocidades máximas y zonas inseguras.
+\item Se asume que el celular del asegurado tiene prendido el bluetooth.
+\item En el diagrama de clases no se muestran clases como Velocidad y Coordenada, ya que creemos que no representativos al problema.
+\item Asumimos que la unidad de la velocidad es siempre km/h.
+\item La velocidad límite del evento de cambio brusco de velocidad no se define cuando se crea el mismo, sino que ya está predefinida.
+\end{itemize}
