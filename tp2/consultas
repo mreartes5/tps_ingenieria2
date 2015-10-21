@@ -1,0 +1,15 @@
+cuantas iteraciones hay que hacer? Tiene que haber una iteracion por cada fase? Que fecha limite para terminar el proyecto hay?
+la primera iteracion es del 27/10 al 12/11... y las otras??
+
+cada vehiculo procesa la informacion y manda las infracciones al server?? o cada vehiculo manda las info y el servidor se fija si generar la infraccion o no?
+- cada vehiculo consulta velocidades y genera las infracciones
+- si no hay conexion se guarda la informacion y luego se le manda al server junto con las infracciones cometidas.
+
+con la fotomulta si no se reconoce bien la patente no se hace la multa y listo. Podemos?
+si lo queremos hacer tendriamos que guardar la info de todos los vehiculos (por un lapso de tiempo) y cuando no se puede ver la foto multa se consulta si un vehiculo estuvo en esa esquina en ese momento y lugar
+
+distancias entre autos no respetadas?? como calculamos esta infraccion. Imposible!!! (aparte se mide en tiempo esta infraccion, o sea tiene que haber una separacion de x segundos entre auto y auto)
+
+cuales van en la primera iteracion? los mas riesgosos?
+
+
