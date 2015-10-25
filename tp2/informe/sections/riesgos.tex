@@ -1,1 +1,64 @@
 \section{Análisis de riesgos}
+
+Se hizo un analisis de los casos de uso y se determinaron como riesgosos los siguientes:
+
+
+\begin{itemize}
+
+\item \textit{Enviando información del vehículo al servidor}
+\begin{itemize}
+\item \textbf{Descripción:} Dado que la conectividad a través del país no está muy desarrollada, es posible que se pierdan los datos capturados y no alcancen el servidor.
+\item \textbf{Probabilidad:} Alta
+\item \textbf{Impacto:} Alto
+\item \textbf{Exposición:} Alta
+\item \textbf{Mitigación:} Equipar el módulo de GPS con una memoria interna que pueda almacenar las mediciones no enviadas y agregar lógica de reenvío en el mismo.
+\item \textbf{Plan de Contingencia:} Activar la comunicación alternativa través de los Drones. El cambio de interfaz debería ser transparente, pues los drones solo actuarán como puente entre el vehículo y los servidores.
+\end{itemize}
+
+\end{itemize}
+
+
+
+\begin{itemize}
+
+\item \textit{Detectando baja conectividad}
+\begin{itemize}
+\item \textbf{Descripción:} Es posible que el sensor que mide la conectividad falle, ya sea que no de información correcta o simplemente deje de funcionar.
+\item \textbf{Probabilidad:} Media
+\item \textbf{Impacto:} Alto
+\item \textbf{Exposición:} Alta
+\item \textbf{Mitigación:} En cada punto donde se coloque un sensor, colocar otro redundante, reduciendo asi la probabilidad de no detectar la zona de baja conectividad.
+\item \textbf{Plan de Contingencia:} Cuando no se detecta información de una zona o no es coherente (información distinta de ambos sensores), se evalúa enviar un dron automáticamente para cubrir la zona, y al mismo tiempo se envian técnicos a reparar/reemplazar los sensores.
+\end{itemize}
+
+\end{itemize}
+
+
+\begin{itemize}
+
+\item \textit{Procesando/generando infracciones}
+\begin{itemize}
+\item \textbf{Descripción:} Siendo caracteristica principal del sistema, el sistema puede generar infracciones cuando no corresponde o bien, no hacerlo cuando debería.
+\item \textbf{Probabilidad:} Baja
+\item \textbf{Impacto:} Alto
+\item \textbf{Exposición:} Media
+\item \textbf{Mitigación:} Armar casos de test que cubran escenarios bien definidos. Asegurar que las infracciones tengan la información necesaria para ser auditadas, y reutilizar esta información para definir nuevos escenarios de test y perfeccionar el algoritmo de detección de infracciones.
+\item \textbf{Plan de Contingencia:} Ante infracciones generadas que no lo son, los conductores pueden iniciar un reclamo para la anulación de la misma. Para las infracciones omitidas, la retroalimentación de la información recolectada se encarga de mejorar el algoritmo incrementalmente.
+\end{itemize}
+
+\end{itemize}
+
+
+\begin{itemize}
+
+\item \textit{Enviando valores al ministerio}
+\begin{itemize}
+\item \textbf{Descripción:} Dado que es una funcionalidad esencial del sistema, que repercute directamente en los conductores, puede ser comprometida la seguridad de la comunicación.
+\item \textbf{Probabilidad:} Baja
+\item \textbf{Impacto:} Alto
+\item \textbf{Exposición:} Media
+\item \textbf{Mitigación:} Asegurar la confidencialidad, la integridad de los datos y autenticación en la comunicación entre los servidores.
+\item \textbf{Plan de Contingencia:} Se audita de urgencia el sistema, y se cambian las claves de cifrado.
+\end{itemize}
+
+\end{itemize}
