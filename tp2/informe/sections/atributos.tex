@@ -1,1 +1,133 @@
 \section{Especificación de Atributos de Calidad}
+
+Escenario 1: Disponibilidad
+
+
+Descripción: Ante eventualidades como pérdidas de información por catástrofes 
+naturales, se desea que esta información se mantenga protegida y disponible en 
+todo momento
+\begin{itemize}
+\item Fuente: Externa
+\item Estímulo: Se corta la luz en Mendoza
+\item Artefacto: Sistema
+\item Entorno: Normal
+\item Respuesta: Se redirigen los datos a procesar a otros nodos distribuidos que pueden completar el trabajo.  
+\item Medición de respuesta: El 99,99\% de los casos la información se encuentra disponible. Además, los datos siguen estando disponible por los nodos replica.
+
+\end{itemize} 
+
+Escenario 2: Disponibilidad
+
+
+Descripción: Se busca que haya conectividad en todo momento para que los datos de GPS se puedan enviar al sistema
+\begin{itemize}
+\item Fuente: Externa
+\item Estímulo: Se detecta baja conectividad
+\item Artefacto: Sistema
+\item Entorno: Normal
+\item Respuesta: Se notifica a los administradores del sistema y a un sistema alternativo para que provea conectividad.
+\item Medición de respuesta: En menos de 12 horas llega el dron al lugar de baja conectividad.
+\end{itemize} 
+
+Escenario 3: Disponibilidad
+
+
+Descripción: Cuando no hay buena conectividad se desea que los datos medidos por el GPS no se pierdan
+\begin{itemize}
+\item Fuente: Externa
+\item Estímulo: No hay conectividad
+\item Artefacto: Sistema de Controlador vehicular
+\item Entorno: Normal
+\item Respuesta: Se guardan los datos localmente hasta que vuelva a haber conectividad. 
+\item Medición de respuesta: El 99,999\% de los datos no se pierden
+\end{itemize} 
+
+Escenario 4: Performance
+
+
+Descripción: Se desea que el sistema ande muy rápido soportando el gran volumen de datos de todos los autos registrados del país.
+\begin{itemize}
+\item Fuente: Externa
+\item Estímulo: Llegan 10000 mediciones hechas por GPS
+\item Artefacto: Sistema
+\item Entorno: Normal
+\item Respuesta: Los datos son procesados y se generan las infracciones correspondientes
+\item Medición de respuesta: En a lo sumo 5 segundos las infracciones son generadas satisfactoriamente.
+\end{itemize} 
+
+Escenario 5: Performance
+
+
+Descripción: Los datos deben poder ser visualizados en un mapa en tiempo real, con el menor delay posible.
+\begin{itemize}
+\item Fuente: Externa
+\item Estímulo: Se genera una medición en un vehículo que implica una infracción de exceso de velocidad
+\item Artefacto: Sistema
+\item Entorno: Normal
+\item Respuesta: Se procesa la medición y se persiste la infracción.
+\item Medición de respuesta: La información de la infracción se puede ver en el mapa en menos de 2 hs
+\end{itemize} 
+
+Escenario 6: Seguridad
+
+
+Descripción: Es importante que el sistema esté protegido frente ataques externos
+\begin{itemize}
+\item Fuente: Individuo no identificado
+\item Estímulo: Envío de mediciones fraudulentas
+\item Artefacto: Sistema
+\item Entorno: Normal
+\item Respuesta: Se detecta que no proviene de una fuente confiable, se descarta y se loguea el ataque. 
+\item Medición de respuesta: El 99,9\% de los casos se detecta el ataque satisfactoriamente.
+\end{itemize} 
+
+Escenario 7: Seguridad
+
+
+Descripción: El acceso a datos está restringido a los roles de cada usuario.
+\begin{itemize}
+\item Fuente: Individuo identificado (empleado de Drones SA)
+\item Estímulo: Consulta las mediciones recolectadas
+\item Artefacto: Sistema
+\item Entorno: Normal
+\item Respuesta: Se brindan los datos a través de una interfaz web. 
+\item Medición de respuesta: Los datos presentados corresponden al nivel de acceso que tiene el usuario autenticado.
+\end{itemize} 
+
+Escenario 8: Seguridad
+
+
+Descripción: La sensibilidad de la información acumulada por nuestro sistema debe asegurarse de tal forma que permita auditar los movimientos en caso de ser pedido por la Defensoría del Pueblo.
+\begin{itemize}
+\item Fuente: Agente de la Defensoría del Pueblo
+\item Estímulo: Desea auditar los movimientos de un conductor
+\item Artefacto: Sistema
+\item Entorno: Normal
+\item Respuesta: Se devuelve el registro detallado del último mes de actividad del conductor. 
+\item Medición de respuesta: \textbf{AGREGAR}
+\end{itemize} 
+
+Escenario 9: Modificabilidad
+
+
+Descripción: \textbf{AGREGAR}
+\begin{itemize}
+\item Fuente: Externa
+\item Estímulo: Se desea agregar un nuevo tipo de infracción
+\item Artefacto: Sistema
+\item Entorno: En ejecución
+\item Respuesta: Se agrega un el nuevo tipo de infracción sin alterar otras funcionalidades 
+\item Medición de respuesta: Se invierten menos de 8 horas hombre
+\end{itemize} 
+
+Escenario 10: Usabilidad
+Descripción: Los usuarios deben tener una herramienta para poder acceder al historial de infracciones 
+\begin{itemize}
+\item Fuente: Externa
+\item Estímulo: Un conductor pide revisar su actividad
+\item Artefacto: Interfaz web para conductores 
+\item Entorno: En diseño 
+\item Respuesta: Se accede al repositorio de auditoría local y se muestran los datos solicitados al interesado
+\item Medición de respuesta: El usuario está satisfecho (poner nivel)
+\end{itemize} 
+
