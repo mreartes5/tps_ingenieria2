@@ -8,17 +8,20 @@ Para empezar, se presenta la arquitectura correspondiente al Tp2.\newline
 \subsection{General}
 
 Tenemos dos formas de observar nuestra arquitectura, la primera con un enfoque general donde se ven
-los componentes externos a nuestro sistema que interactuan con nosotros. Con 
-esta vision, nuestra arquitectura se ve como un único componente monolitico pues es mas sencillo a
+los componentes externos a nuestro sistema que interactúan con nosotros. Con 
+esta visión, nuestra arquitectura se ve como un único componente monolítico pues es más sencillo a
 este nivel, sin embargo, contamos con una arquitectura distribuida a lo largo y ancho del país 
-que podremos ver con mas detalle en las siguientes vistas.
+que podremos ver con más detalle en las siguientes vistas.
 
 \begin{figure}
 \centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/general.png}}
 \caption{Arquitectura general}
 \end{figure}
+%\centerline{ \includegraphics[width=0.7\textwidth]{./imagenes/arquitectura_tp2/general.png} } 
+ % \centerline{Arquitectura general}
 
-Como podemos ver, son varios los componentes externos que interactuan con 
+
+Como podemos ver, son varios los componentes externos que interactúan con 
 nuestro sistema, cada uno con sus particularidades que pasaremos a detallar.
 
 \subsection{Sensor}
@@ -29,17 +32,17 @@ arquitectura.
 
 \begin{itemize}
   \item Receptor de mediciones de conectividad: Recolecta las mediciones del 
-  hardware y las encola en el proximo componente.
+  hardware y las encola en el próximo componente.
   
   \item Comunicador con administrador de sensores: Toma las mediciones y las 
-  envia al Administrador de sensores de nuestro sistema \textbf{ManejAR}.
+  envía al Administrador de sensores de nuestro sistema \textbf{ManejAR}.
 \end{itemize}
 
 
 
-La particularidad de la conexion entre este ultimo componente y el sistema 
-manejar es que el medio tiene perdida de paquetes pero decidimos no crear una 
-estrategia de reenvio pues enviamos esas mediciones cada 5 segundos.
+La particularidad de la conexión entre este último componente y el sistema 
+manejar es que el medio tiene pérdida de paquetes pero decidimos no crear una 
+estrategia de reenvío pues enviamos esas mediciones cada 5 segundos.
 
 
 \begin{figure}
@@ -48,15 +51,15 @@ estrategia de reenvio pues enviamos esas mediciones cada 5 segundos.
 \end{figure}
 
 \subsection{Control Vehicular}
-El controlador vehicular, es el componente que se encuentra en cada uno de los vehiculos que deben
+El controlador vehicular, es el componente que se encuentra en cada uno de los vehículos que deben
 ser monitoreados. En este componente encontramos los siguientes subcomponentes.
 
-Receptor de mediciones: Este se encarga de recibir las mediciones realizadas por el GPS de su vehiculo,
+Receptor de mediciones: Este se encarga de recibir las mediciones realizadas por el GPS de su vehículo,
  y las guarda en un repositorio de Mediciones.
  
 Mediciones: Es el repositorio donde se almacenan las mediciones del GPS.
  Es importante la presencia de este componente de almacenamiento, porque nos permite preservar
-las mediciones hasta que hayan sido enviadas, fundamental para no perder mediciones ante un
+las mediciones hasta el momento del envío, fundamental para no perder mediciones ante un
  problema de conectividad.
 Transmitidor: Encargado de asegurarse del envio de las mediciones al Balanceador, del Sistema Manejar.
 Antes de enviar cualquier dato, se comunica con el Encriptador y el Checksum para proteger la
@@ -73,8 +76,8 @@ cuando logre conectarse. De esta manera nos aseguramos no perder mediciones, y
 
 \subsection{Sistema Manejar}
 
-Si nos concntramos en los componentes dentro del cuadro blanco, podemos 
-organizarlos en dos categorias [[NOTA: Esto es la vista de deploy ]]
+Si nos concentramos en los componentes dentro del recuadro principal, podemos 
+organizarlos en dos categorías:
 
 * Esta en servidor central
 * Distribuido en diferentes nodos a lo largo del pais.
@@ -97,7 +100,7 @@ mismos.
 
 \subsubsection{Administrador de reglas de infracciones}
 
-Es el encargado de recibir las modificaciones en las reglas de infracciones y 
+Es el encargado de recibir las modificaciones de las reglas de infracciones y 
 notificarlas a todos los \textbf{Controladores de datos de GPS} usando un \textit{broadcast}.
 
 \subsubsection{Generador de Puntos a partir de Infracciones}
@@ -111,7 +114,7 @@ y calcula el puntaje a restar a cada conductor. Luego se lo informa al
 Las responsabilidades de este componente son dos.
 La primera es actualizar nuestra base de registros directamente del \textbf{Sistema del Ministerio de Transporte}
 para poder identificar los conductores profesionales de los particulares. 
-La segunda envia los puntos a descontar a cada conductor profesional.
+La segunda envía los puntos a descontar a cada conductor profesional.
 
 \subsubsection{Balanceador}
 El balanceo de carga es un concepto usado que se refiere a la técnica usada para compartir el trabajo
@@ -129,25 +132,25 @@ Recibe las mediciones directas del GPS, las desencripta y las publica en un \tex
 al cual estan subscriptos los siguientes componentes:
 
 \begin{itemize}
-  \item Persistidor temporal para auditoria
+  \item Persistidor temporal para auditoría
   \item Persistidor de datos para empresa de drones
-  \item Generador de estadisticas
-  \item Generador de infracciones (Multiples instancias)
+  \item Generador de estadísticas
+  \item Generador de infracciones (Múltiples instancias)
 \end{itemize}
 
-Los primeros tres son triviales, pero el último merece dar una descripcion mas 
+Los primeros tres son triviales, pero el último merece dar una descripción más 
 detallada.
 
-Las multiples instancias de este proceso, comparten un mismo \textit{pipe} pero 
+Las múltiples instancias de este proceso, comparten un mismo \textit{pipe} pero 
 el primero que lo recibe lo remueve de la cola. De esta manera nos garantizamos 
 que no se repita el procesamiento de los datos y poder paralelizar este 
 proceso, pues la cantidad de datos en este \textit{pipe} es inmensa.
-Cada una de estas instancias, debera comunicarse con el Sistema del Ministerio 
-de Transporte, para obtener las velocidades maximas. Ademas debe leer del 
+Cada una de estas instancias, deberá comunicarse con el Sistema del Ministerio 
+de Transporte, para obtener los límites de velocidades. Además debe leer del 
 repositorio de Reglas de infracciones, las reglas para poder generar las 
-infracciones segun corresponda.
-Las infracciones generadas seran guardadas en un repositorio de Infracciones 
-comunicandose con el \textit{Administrador de Bases de Datos}
+infracciones según corresponda.
+Las infracciones generadas serán guardadas en un repositorio de Infracciones 
+comunicándose con el \textit{Administrador de Bases de Datos}.
 
 Las \textit{Reglas de infracciones} son actualizadas por medio de un 
 \textit{ABM}, que recibe las actualizaciones del \textit{Administrador de reglas de 
@@ -156,17 +159,17 @@ infracciones}.
 
 \subsubsection{Administrador de Bases de Datos}
 Es el encargado de mantener los datos replicados en los distintos nodos, 
-asegurandose de brindar una consistencia eventual entre ellos, con el objetivo 
+asegurándose de brindar una consistencia eventual entre ellos, con el objetivo 
 de brindarnos performance y disponibilidad.
 Es su responsabilidad, hacer de intermediario entre quienes quieran leer o 
 escribir de los siguientes repositorios:
 
 \begin{itemize}
-  \item Auditoria: Guarda informacion para que los conductores puedan auditar 
-  sus multas dentro del periodo de 1 mes.
-  \item Estadisticas: Guarda las estadisticas generadas por el Generador de estadisticas
-  \item Drones: Guarda los datos que le seran brindados a la empresa de drones
-  \item Infracciones: Se guardan las infracciones generadas, que seran utilizadas 
+  \item Auditoría: Guarda información para que los conductores puedan auditar 
+  sus multas dentro del período de 1 mes.
+  \item Estadísticas: Almacena las estadísticas generadas por el Generador de estadísticas.
+  \item Drones: Guarda los datos que le seran brindados a la empresa de drones.
+  \item Infracciones: Se guardan las infracciones generadas, que serán utilizadas 
   para calcular los puntajes.
 \end{itemize}
 
@@ -180,7 +183,8 @@ escribir de los siguientes repositorios:
 \subsection{Administrador de Fotomultas}
 Filtra las multas recibidas del Sistema de fotomultas, para almacenar solo las 
 infracciones correspondientes a conductores profesionales.
-
+Este componente ya manda las infracciones generadas, no es necesario procesarlas,
+śolo se encarga de hacer el filtro explicado anteriormente.
 
 \begin{figure}
 \centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/administrador_fotomultas.png}}
@@ -191,15 +195,15 @@ infracciones correspondientes a conductores profesionales.
 \subsection{Administrador de sensores}
 Este proceso, es el responsable de recibir las mediciones de los sensores, que 
 primero seran monitoreadas por el Monitor de sensores. Este controla que todos 
-los sensores se esten comunicando periodicamente, utilizando la tactica de 
-heartbeat. En caso de no recibir mensajes de alguno de los sensores, envia una 
-alerta al Comunicador con Sistema de Drones, que accionara segun corresponda.
+los sensores se esten comunicando periódicamente, utilizando la táctica de 
+\textit{heartbeat}. En caso de no recibir mensajes de alguno de los sensores, envía una 
+alerta al Comunicador con Sistema de Drones, que accionará según corresponda.
 Al mismo tiempo, el Monitor de sensores, encola las mediciones al Procesador. El 
-cual las almacena en un repositorio y realiza un analisis de las mediciones en 
+cual las almacena en un repositorio y realiza un análisis de las mediciones en 
 el tiempo para detectar baja conectividad y alertar al Comunicador.
-El Comunicador debera enviar un mail a los tecnicos correspondientes, al Sistema 
-de drones y ademas, guardar un log del uso de los drones para fines de 
-auditoria.
+El Comunicador deberá enviar un mail a los técnicos correspondientes, al Sistema 
+de drones y, además, guardar un log del uso de los drones para fines de 
+auditoría.
 
 
 \begin{figure}
