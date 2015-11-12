@@ -10,12 +10,8 @@ esta visión, nuestra arquitectura se ve como un único componente monolítico p
 este nivel, sin embargo, contamos con una arquitectura distribuida a lo largo y ancho del país 
 que podremos ver con más detalle en las siguientes vistas.
 
-\begin{figure}
-\centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/general.png}}
-\caption{Arquitectura general}
-\end{figure}
-%\centerline{ \includegraphics[width=0.7\textwidth]{./imagenes/arquitectura_tp2/general.png} } 
- % \centerline{Arquitectura general}
+\centerline{\includegraphics[width=0.7\textwidth]{./imagenes/arquitectura_tp2/general.png} } 
+\centerline{\textit{Figura 1: Arquitectura general}}
 
 
 Como podemos ver, son varios los componentes externos que interactúan con 
@@ -40,10 +36,9 @@ manejar es que el medio tiene pérdida de paquetes pero decidimos no crear una
 estrategia de reenvío pues enviamos esas mediciones cada 5 segundos.
 
 
-\begin{figure}
 \centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/sensor.png}}
-\caption{Arquitectura interna de los Sensores}
-\end{figure}
+\centerline{\textit{Figura 2: Arquitectura interna de los Sensores}}
+
 
 \subsection{Control Vehicular}
 
@@ -68,10 +63,9 @@ En caso de no disponer de conectividad, se reintentara el envío de la medición
 De esta manera nos aseguramos no perder mediciones, y contar con todas las mediciones generadas.
 \end{itemize}
 
-\begin{figure}
+
 \centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/controlador_vehicular.png}}
-\caption{Arquitectura interna de los Controladores vehiculares}
-\end{figure}
+\centerline{\textit{Figura 3: Arquitectura interna de los Controladores vehiculares}}
 
 
 \subsection{Sistema Manejar}
@@ -92,10 +86,9 @@ disponibilidad del servicio ya sea del procesamiento como la redundancia de las 
 Esto aporta para cumplir el \textit{Escenario 4}
 
 
-\begin{figure}
 \centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/manejar.png}}
-\caption{Arquitectura interna del Sistema ManejAR}
-\end{figure}
+\centerline{\textit{Figura 4: Arquitectura interna del Sistema ManejAR}}
+
 
 La mayoría de estos componentes los explicaremos en detalle más adelante con su 
 respectiva vista. Para los que no, alcanza la siguiente descripción de los 
@@ -183,10 +176,10 @@ escribir de los siguientes repositorios:
 \end{itemize}
 
 
-\begin{figure}
+
 \centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/controlador_datos_gps.png}}
-\caption{Arquitectura interna del Controlador de datos de GPS del Sistema ManejAR}
-\end{figure}
+\centerline{\textit{Figura 5: Arquitectura interna del Controlador de datos de GPS del Sistema ManejAR}}
+
 
 
 \subsection{Administrador de Fotomultas}
@@ -195,11 +188,8 @@ infracciones correspondientes a conductores profesionales.
 Este componente ya manda las infracciones generadas, no es necesario procesarlas,
 śolo se encarga de hacer el filtro explicado anteriormente.
 
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/administrador_fotomultas.png}
-  \caption{Arquitectura interna del Administrador de Fotomultas del Sistema ManejAR}
-\end{figure}
+\centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/administrador_fotomultas.png}}
+\centerline{\textit{Figura 6: Arquitectura interna del Administrador de Fotomultas del Sistema ManejAR}}
 
 
 \subsection{Administrador de sensores}
@@ -216,10 +206,9 @@ de drones} y además, guardar un log del uso de los drones para fines de auditor
 Estas medidas impactan en el \textit{Escenario 2}.
 
 
-\begin{figure}
+
 \centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/administrador_sensores.png}}
-\caption{Arquitectura interna del Administrador de Sensores del Sistema ManejAR}
-\end{figure}
+\centerline{\textit{Figura 7: Arquitectura interna del Administrador de Sensores del Sistema ManejAR}}
 
 
 \subsection{Web Server}
@@ -228,14 +217,14 @@ y acceder a la informacion que les corresponda segun sus permisos, cumpliendo
 con el \textit{Escenario 7, 8 y 10}.
 
 
-\begin{figure}
+
 \centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/web_server.png}}
-\caption{Arquitectura interna del Web Server del Sistema ManejAR}
-\end{figure}
+\centerline{\textit{Figura 8: Arquitectura interna del Web Server del Sistema ManejAR}}
 
 
 \subsection{Referencias de los conectores}
 
 
 
-\centerline{ \includegraphics[width=0.7\textwidth]{./imagenes/arquitectura_tp2/referencias.png} } 
+\centerline{\includegraphics[width=0.7\textwidth]{./imagenes/arquitectura_tp2/referencias.png}} 
+\centerline{\textit{Figura 9: Referencias}}
