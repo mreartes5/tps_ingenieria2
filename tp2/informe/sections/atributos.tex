@@ -1,6 +1,6 @@
 \section{Especificación de Atributos de Calidad}
 
-Escenario 1: Disponibilidad
+\underline{Escenario 1: Disponibilidad}
 
 
 Descripción: Ante eventualidades como pérdidas de información por catástrofes naturales, se desea que esta información se mantenga protegida y disponible en todo momento
@@ -14,7 +14,7 @@ Descripción: Ante eventualidades como pérdidas de información por catástrofe
 
 \end{itemize} 
 
-Escenario 2: Disponibilidad
+\underline{Escenario 2: Disponibilidad}
 
 
 Descripción: Se busca que haya conectividad en todo momento para que los datos de GPS se puedan enviar al sistema
@@ -27,7 +27,7 @@ Descripción: Se busca que haya conectividad en todo momento para que los datos 
 \item Medición de respuesta: En menos de 12 horas llega el dron al lugar de baja conectividad.
 \end{itemize} 
 
-Escenario 3: Disponibilidad
+\underline{Escenario 3: Disponibilidad}
 
 
 Descripción: Cuando no hay buena conectividad se desea que los datos medidos por el GPS no se pierdan
@@ -36,13 +36,12 @@ Descripción: Cuando no hay buena conectividad se desea que los datos medidos po
 \item Estímulo: No hay conectividad
 \item Artefacto: Sistema de Controlador vehicular
 \item Entorno: Normal
-\item Respuesta: Se guardan los datos localmente hasta que vuelva a haber conectividad. 
+\item Respuesta: Se guardan los datos localmente, por 24 horas, hasta que vuelva a haber conectividad.
 \item Medición de respuesta: El 99,999\% de los datos no se pierden
 \end{itemize} 
-\textbf{PONER ALGO DEL TIEMPO MAX DE GUARDAR DATOS}
 
 
-Escenario 4: Performance
+\underline{Escenario 4: Performance}
 
 
 Descripción: Se desea que el sistema ande muy rápido soportando el gran volumen de datos de todos los autos registrados del país.
@@ -55,7 +54,7 @@ Descripción: Se desea que el sistema ande muy rápido soportando el gran volume
 \item Medición de respuesta: En a lo sumo 5 segundos las infracciones son generadas satisfactoriamente.
 \end{itemize} 
 
-Escenario 5: Performance
+\underline{Escenario 5: Performance}
 
 
 Descripción: Los datos deben poder ser visualizados en un mapa en tiempo real, con el menor delay posible.
@@ -68,7 +67,7 @@ Descripción: Los datos deben poder ser visualizados en un mapa en tiempo real, 
 \item Medición de respuesta: La información de la infracción se puede ver en el mapa en menos de 2 hs
 \end{itemize} 
 
-Escenario 6: Seguridad
+\underline{Escenario 6: Seguridad}
 
 
 Descripción: Es importante que el sistema esté protegido frente ataques externos
@@ -81,7 +80,7 @@ Descripción: Es importante que el sistema esté protegido frente ataques extern
 \item Medición de respuesta: El 99,9\% de los casos se detecta el ataque satisfactoriamente.
 \end{itemize} 
 
-Escenario 7: Seguridad
+\underline{Escenario 7: Seguridad}
 
 
 Descripción: El acceso a datos está restringido a los roles de cada usuario.
@@ -94,10 +93,11 @@ Descripción: El acceso a datos está restringido a los roles de cada usuario.
 \item Medición de respuesta: Los datos presentados corresponden al nivel de acceso que tiene el usuario autenticado.
 \end{itemize} 
 
-Escenario 8: Seguridad
+\underline{Escenario 8: Seguridad}
 
 
-Descripción: La sensibilidad de la información acumulada por nuestro sistema debe asegurarse de tal forma que permita auditar los movimientos en caso de ser pedido por la Defensoría del Pueblo.
+Descripción: La sensibilidad de la información acumulada por nuestro sistema debe asegurarse de tal forma que permita auditar los 
+movimientos en caso de ser pedido por la Defensoría del Pueblo.
 \begin{itemize}
 \item Fuente: Agente de la Defensoría del Pueblo
 \item Estímulo: Desea auditar los movimientos de un conductor
@@ -106,9 +106,9 @@ Descripción: La sensibilidad de la información acumulada por nuestro sistema d
 \item Respuesta: Se muestra el registro detallado del último mes de actividad del conductor
 \item Medición de respuesta: En el 99,99\% de los casos la información está disponible.
 \end{itemize}
-\textbf{EN LA PARTE DE ACLARACIONES PONER QUE NO SON REAL TIME, O DONDE SEA}
 
-Escenario 9: Modificabilidad
+
+\underline{Escenario 9: Modificabilidad}
 
 
 Descripción: Se pretende la incorporación de nuevos tipos de infracciones.
@@ -121,7 +121,10 @@ Descripción: Se pretende la incorporación de nuevos tipos de infracciones.
 \item Medición de respuesta: Se invierten menos de 8 horas hombre
 \end{itemize} 
 
-Escenario 10: Usabilidad
+
+\underline{Escenario 10: Usabilidad}
+
+
 Descripción: Los usuarios deben tener una herramienta para poder acceder al historial de infracciones 
 \begin{itemize}
 \item Fuente: Externa
@@ -129,6 +132,6 @@ Descripción: Los usuarios deben tener una herramienta para poder acceder al his
 \item Artefacto: Interfaz web para conductores 
 \item Entorno: En diseño 
 \item Respuesta: Se accede al repositorio de auditoría local y se muestran los datos solicitados al interesado
-\item Medición de respuesta: El 95\% de los usuarios estuvo satisfecho con nivel 9. 
+\item Medición de respuesta: De un total de 1000 usuarios encuestados (con nieveles de satisfacción entre 1 y 10), el 95\% de los usuarios estuvo satisfecho con nivel mayor o igual a 8. 
 \end{itemize} 
-\textbf{ACLARAR QUE SE LES PREGUNTA A 1000 USUARIOS EL NIVEL DE SATISFACCION DE 1 A 10}	
+
