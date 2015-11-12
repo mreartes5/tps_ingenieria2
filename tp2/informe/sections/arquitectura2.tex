@@ -10,8 +10,10 @@ esta visión, nuestra arquitectura se ve como un único componente monolítico p
 este nivel, sin embargo, contamos con una arquitectura distribuida a lo largo y ancho del país 
 que podremos ver con más detalle en las siguientes vistas.
 
-\centerline{\includegraphics[width=0.7\textwidth]{./imagenes/arquitectura_tp2/general.png} } 
-\centerline{\textit{Figura 1: Arquitectura general}}
+\begin{center}
+  \includegraphics[width=0.7\textwidth]{./imagenes/arquitectura_tp2/general.png}
+  \centerline{\textit{Figura 1: Arquitectura general}}
+\end{center}
 
 
 Como podemos ver, son varios los componentes externos que interactúan con 
@@ -35,9 +37,10 @@ La particularidad de la conexión entre este último componente y el sistema
 manejar es que el medio tiene pérdida de paquetes pero decidimos no crear una 
 estrategia de reenvío pues enviamos esas mediciones cada 5 segundos.
 
-
-\centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/sensor.png}}
-\centerline{\textit{Figura 2: Arquitectura interna de los Sensores}}
+\begin{center}
+  \includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/sensor.png}
+  \centerline{\textit{Figura 2: Arquitectura interna de los Sensores}}
+\end{center}
 
 
 \subsection{Control Vehicular}
@@ -63,10 +66,12 @@ En caso de no disponer de conectividad, se reintentara el envío de la medición
 De esta manera nos aseguramos no perder mediciones, y contar con todas las mediciones generadas.
 \end{itemize}
 
+\begin{center}
+  \includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/controlador_vehicular.png}
+  \centerline{\textit{Figura 3: Arquitectura interna de los Controladores vehiculares}}
+\end{center}
 
-\centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/controlador_vehicular.png}}
-\centerline{\textit{Figura 3: Arquitectura interna de los Controladores vehiculares}}
-
+\newpage
 
 \subsection{Sistema Manejar}
 
@@ -85,10 +90,10 @@ con el objetivo de optimizar el procesamiento de datos y a su vez, asegurar la
 disponibilidad del servicio ya sea del procesamiento como la redundancia de las bases de datos.
 Esto aporta para cumplir el \textit{Escenario 4}
 
-
-\centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/manejar.png}}
-\centerline{\textit{Figura 4: Arquitectura interna del Sistema ManejAR}}
-
+\begin{center}
+  \includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/manejar.png}
+  \centerline{\textit{Figura 4: Arquitectura interna del Sistema ManejAR}}
+\end{center}
 
 La mayoría de estos componentes los explicaremos en detalle más adelante con su 
 respectiva vista. Para los que no, alcanza la siguiente descripción de los 
@@ -176,21 +181,26 @@ escribir de los siguientes repositorios:
 \end{itemize}
 
 
+\begin{center}
+  \includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/controlador_datos_gps.png}
+  \centerline{\textit{Figura 5: Arquitectura interna del Controlador de datos de GPS del Sistema ManejAR}}
+\end{center}
 
-\centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/controlador_datos_gps.png}}
-\centerline{\textit{Figura 5: Arquitectura interna del Controlador de datos de GPS del Sistema ManejAR}}
-
-
+\newpage
 
 \subsection{Administrador de Fotomultas}
+
 Filtra las multas recibidas del Sistema de fotomultas, para almacenar solo las 
 infracciones correspondientes a conductores profesionales.
 Este componente ya manda las infracciones generadas, no es necesario procesarlas,
 śolo se encarga de hacer el filtro explicado anteriormente.
 
-\centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/administrador_fotomultas.png}}
-\centerline{\textit{Figura 6: Arquitectura interna del Administrador de Fotomultas del Sistema ManejAR}}
+\begin{center}
+  \includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/administrador_fotomultas.png}
+  \centerline{\textit{Figura 6: Arquitectura interna del Administrador de Fotomultas del Sistema ManejAR}}
+\end{center} 
 
+\newpage
 
 \subsection{Administrador de sensores}
 Este proceso, es el responsable de recibir las mediciones de los sensores, que 
@@ -205,26 +215,30 @@ El \textbf{Comunicador} debera enviar un mail a los técnicos correspondientes, 
 de drones} y además, guardar un log del uso de los drones para fines de auditoria.
 Estas medidas impactan en el \textit{Escenario 2}.
 
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{./imagenes/arquitectura_tp2/administrador_sensores.png}
+  \centerline{\textit{Figura 7: Arquitectura interna del Administrador de Sensores del Sistema ManejAR}}
+\end{center}
 
-
-\centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/administrador_sensores.png}}
-\centerline{\textit{Figura 7: Arquitectura interna del Administrador de Sensores del Sistema ManejAR}}
-
+\newpage
 
 \subsection{Web Server}
+
 Funciona como una interfaz, para que los distintos usuarios puedan autenticarse 
 y acceder a la informacion que les corresponda segun sus permisos, cumpliendo 
 con el \textit{Escenario 7, 8 y 10}.
 
 
+\begin{center}
+  \includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/web_server.png}
+  \centerline{\textit{Figura 8: Arquitectura interna del Web Server del Sistema ManejAR}}
+\end{center}
 
-\centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/web_server.png}}
-\centerline{\textit{Figura 8: Arquitectura interna del Web Server del Sistema ManejAR}}
-
+\newpage
 
 \subsection{Referencias de los conectores}
 
-
-
-\centerline{\includegraphics[width=0.7\textwidth]{./imagenes/arquitectura_tp2/referencias.png}} 
-\centerline{\textit{Figura 9: Referencias}}
+\begin{center}
+  \includegraphics[width=0.7\textwidth]{./imagenes/arquitectura_tp2/referencias.png}
+  \centerline{\textit{Figura 9: Referencias}}
+\end{center}
