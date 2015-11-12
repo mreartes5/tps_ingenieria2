@@ -125,10 +125,50 @@ alta performance y disponibilidad del sistema.
 
 \subsubsection{Controlador de datos de GPS}
 
+Recibe las mediciones directas del GPS, las desencripta y las publica en un \textit{BUS} 
+al cual estan subscriptos los siguientes componentes:
+
+\begin{itemize}
+  \item Persistidor temporal para auditoria
+  \item Persistidor de datos para empresa de drones
+  \item Generador de estadisticas
+  \item Generador de infracciones (Multiples instancias)
+\end{itemize}
+
+Los primeros tres son triviales, pero el último merece dar una descripcion mas 
+detallada.
+
+Las multiples instancias de este proceso, comparten un mismo \textit{pipe} pero 
+el primero que lo recibe lo remueve de la cola. De esta manera nos garantizamos 
+que no se repita el procesamiento de los datos y poder paralelizar este 
+proceso, pues la cantidad de datos en este \textit{pipe} es inmensa.
+Cada una de estas instancias, debera comunicarse con el Sistema del Ministerio 
+de Transporte, para obtener las velocidades maximas. Ademas debe leer del 
+repositorio de Reglas de infracciones, las reglas para poder generar las 
+infracciones segun corresponda.
+Las infracciones generadas seran guardadas en un repositorio de Infracciones 
+comunicandose con el \textit{Administrador de Bases de Datos}
+
+Las \textit{Reglas de infracciones} son actualizadas por medio de un 
+\textit{ABM}, que recibe las actualizaciones del \textit{Administrador de reglas de 
+infracciones}.
 
 
 \subsubsection{Administrador de Bases de Datos}
+Es el encargado de mantener los datos replicados en los distintos nodos, 
+asegurandose de brindar una consistencia eventual entre ellos, con el objetivo 
+de brindarnos performance y disponibilidad.
+Es su responsabilidad, hacer de intermediario entre quienes quieran leer o 
+escribir de los siguientes repositorios:
 
+\begin{itemize}
+  \item Auditoria: Guarda informacion para que los conductores puedan auditar 
+  sus multas dentro del periodo de 1 mes.
+  \item Estadisticas: Guarda las estadisticas generadas por el Generador de estadisticas
+  \item Drones: Guarda los datos que le seran brindados a la empresa de drones
+  \item Infracciones: Se guardan las infracciones generadas, que seran utilizadas 
+  para calcular los puntajes.
+\end{itemize}
 
 
 \begin{figure}
@@ -138,7 +178,8 @@ alta performance y disponibilidad del sistema.
 
 
 \subsection{Administrador de Fotomultas}
-
+Filtra las multas recibidas del Sistema de fotomultas, para almacenar solo las 
+infracciones correspondientes a conductores profesionales.
 
 
 \begin{figure}
@@ -147,12 +188,29 @@ alta performance y disponibilidad del sistema.
 \end{figure}
 
 
-\subsection{
+\subsection{Administrador de sensores}
+Este proceso, es el responsable de recibir las mediciones de los sensores, que 
+primero seran monitoreadas por el Monitor de sensores. Este controla que todos 
+los sensores se esten comunicando periodicamente, utilizando la tactica de 
+heartbeat. En caso de no recibir mensajes de alguno de los sensores, envia una 
+alerta al Comunicador con Sistema de Drones, que accionara segun corresponda.
+Al mismo tiempo, el Monitor de sensores, encola las mediciones al Procesador. El 
+cual las almacena en un repositorio y realiza un analisis de las mediciones en 
+el tiempo para detectar baja conectividad y alertar al Comunicador.
+El Comunicador debera enviar un mail a los tecnicos correspondientes, al Sistema 
+de drones y ademas, guardar un log del uso de los drones para fines de 
+auditoria.
+
 
 \begin{figure}
 \centerline{\includegraphics[width=1\textwidth]{./imagenes/arquitectura_tp2/administrador_sensores.png}}
 \caption{Arquitectura interna del Administrador de Sensores del Sistema ManejAR}
 \end{figure}
+
+
+\subsection{Web Server}
+Funciona como una interfaz, para que los distintos usuarios puedan autenticarse 
+y acceder a la informacion que les corresponda segun sus permisos.
 
 
 \begin{figure}
